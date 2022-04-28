@@ -125,7 +125,7 @@ const ConsoleStandartIO=({
             }}>
             <div>
             <Typography  sx={{p:0,m:0, fontFamily: 'Source Code Pro'}}>Welcome to web console</Typography>
-            <Typography  sx={{p:0,m:0, fontFamily: 'Source Code Pro'}}>Project Developed by David Fallas, for reference visit <a href="https://github.com/DFallas/rpn-calc">rpn-calc</a></Typography>
+            <Typography  sx={{p:0,m:0, fontFamily: 'Source Code Pro'}}>Project Developed by David Fallas, for reference visit <a href="https://github.com/DFallas/rpn-calc" target="_blank" rel="noreferrer">rpn-calc</a></Typography>
             <br/>
             <br/>
             <Typography  sx={{p:0,m:0, fontFamily: 'Source Code Pro'}}>You can type help for available commands</Typography>
