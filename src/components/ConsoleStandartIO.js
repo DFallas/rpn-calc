@@ -77,7 +77,7 @@ const ConsoleStandartIO=({
     }
 
     const onInnputChange = (event)=>{
-        const  value = event.target.value;
+        const  value = event.target.value.toLowerCase();
         const { keyCode } = event;
         if(keyCode===13){
             switch (value) {
