@@ -1,21 +1,17 @@
 import './App.css';
 import ConsoleStandartIO from './components/ConsoleStandartIO'
-
+import {Container} from "@mui/material"
 function App() {
 
   return (
-    <div className="App">
+    <Container disableGutters maxWidth="none"  className="App">
       <header className="App-header">
         <p className='signature'>
         RVP Calc
         </p>
       </header>
-      <div className='column'>
-        <div className='row'>
-        <ConsoleStandartIO />
-        </div>
-      </div>
-    </div>
+      <ConsoleStandartIO />
+    </Container>
   );
 }
 

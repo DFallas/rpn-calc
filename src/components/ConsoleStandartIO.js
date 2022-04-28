@@ -13,14 +13,12 @@ const VALID_OPERANTS = {
     '*': (left, right) => left * right,
 };
 
-const greetingMessage = '> Welcome to web console type help for available commands'
 const availableComands = [' ', 'clear : clear up console', 'q: quit current program', 'calc: start RPN calculator']
 const calcAvailableComands = [`valid operants : ${Object.keys(VALID_OPERANTS).toString()}`, 'q: quit current program']
 const ConsoleStandartIO=({
     OnRead
 })=>{
 
-    const [readBuffer, setReadBuffer] = useState('');
     const [history, setHistory] = useState([]);
     const [running, setRunning] = useState(null);
     const inputRef = useRef();
@@ -78,11 +76,6 @@ const ConsoleStandartIO=({
         return dir;
     }
 
-    const resetIO = ()=>{
-        setReadBuffer([]);
-        inputRef.current.value='';
-    }
-
     const onInnputChange = (event)=>{
         const  value = event.target.value;
         const { keyCode } = event;
@@ -92,46 +85,52 @@ const ConsoleStandartIO=({
                 case 'q':
                     setRunning('standartIO')
                     exitMessage();
-                    resetIO();
-                    inputRef.current.value='';
                     break;
                 case 'clear':
                     setHistory([]);
-                    resetIO();
                     break;
                 case 'help':
                     displayHelp();
-                    resetIO();
                     break;
                 case 'calc':
-                    setRunning('calc')
-                    const messages = []
-                    messages.push('... Starting NPN Calculator');
-                    cOut(messages)
-                    resetIO();
+                    if(running !== 'calc'){
+                        setRunning('calc')
+                        cOut('... Starting NPN Calculator')
+                    } else {comandNotFound(value)}
                     break;
             
                 default:
                     if(running === 'calc'){
-                        processInput(readBuffer);
+                        processInput(value);
                     } else{
-                        if(readBuffer.length > 0) comandNotFound(readBuffer)
+                        if(value.length > 0) comandNotFound(value)
                     } 
-                    setReadBuffer([]);
+                    
                     inputRef.current.value='';
                     break
             }
+            inputRef.current.value='';
         } 
     
     }
 
     return(
-        <>
-        <Box flexDirection={"column"} sx={{textAlign:'left'}}>
-        <Typography  sx={{p:0,m:0, fontFamily: 'Source Code Pro'}}><pre>{greetingMessage}</pre></Typography>
-        {history.length > 0 && (
-            history.map((item)=><Typography  sx={{p:0,m:0, fontFamily: 'Source Code Pro'}}>{item}</Typography>)
-          )}
+        <Box sx={{
+                textAlign:'left', 
+                marginLeft: 2, 
+                display: "flex",
+                flexDirection: 'row',
+                justifyContent:'center' 
+            }}>
+            <div>
+            <Typography  sx={{p:0,m:0, fontFamily: 'Source Code Pro'}}>Welcome to web console</Typography>
+            <Typography  sx={{p:0,m:0, fontFamily: 'Source Code Pro'}}>Project Developed by David Fallas, for reference visit <a href="https://github.com/DFallas/rpn-calc">rpn-calc</a></Typography>
+            <br/>
+            <br/>
+            <Typography  sx={{p:0,m:0, fontFamily: 'Source Code Pro'}}>You can type help for available commands</Typography>
+            {history.length > 0 && (
+                history.map((item)=><Typography  sx={{p:0,m:0, fontFamily: 'Source Code Pro'}}>{item}</Typography>)
+            )}
             <InputBase
             autoFocus
             sx={{fontFamily: 'Source Code Pro'}}
@@ -141,9 +140,9 @@ const ConsoleStandartIO=({
             inputRef={inputRef}
             startAdornment={<InputAdornment sx={{fontFamily: 'Source Code Pro', color:'inherit'}} position="start"> {getDir()}  </InputAdornment>}
             />
+            </div>
+
         </Box>
-        
-        </>
     )
 }
 
