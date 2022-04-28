@@ -55,7 +55,6 @@ const processInput = (input) =>{
         } else{
             readBuffer.some(item => {
                  result = processSingleInput(item);
-                 console.log('process several inp', {result})
                  if (result === 'unprocesable entity') return true
                  else return false;
                

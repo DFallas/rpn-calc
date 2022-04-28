@@ -1,6 +1,7 @@
 import './App.css';
 import ConsoleStandartIO from './components/ConsoleStandartIO'
-import {Container} from "@mui/material"
+import { Container } from "@mui/material"
+
 function App() {
 
   return (

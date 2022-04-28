@@ -113,6 +113,8 @@ const ConsoleStandartIO=({
     
     }
 
+    const keyBase = Date.now();
+
     return(
         <Box sx={{
                 textAlign:'left', 
@@ -128,7 +130,7 @@ const ConsoleStandartIO=({
             <br/>
             <Typography  sx={{p:0,m:0, fontFamily: 'Source Code Pro'}}>You can type help for available commands</Typography>
             {history.length > 0 && (
-                history.map((item)=><Typography  sx={{p:0,m:0, fontFamily: 'Source Code Pro'}}>{item}</Typography>)
+                history.map((item, idx)=><Typography key={`${keyBase}-${idx}`} sx={{p:0,m:0, fontFamily: 'Source Code Pro'}}>{item}</Typography>)
             )}
             <InputBase
             autoFocus
