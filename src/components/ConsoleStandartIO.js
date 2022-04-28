@@ -80,7 +80,6 @@ const ConsoleStandartIO=({
         const  value = event.target.value;
         const { keyCode } = event;
         if(keyCode===13){
-            console.log("on enter",{readBuffer})
             switch (value) {
                 case 'q':
                     setRunning('standartIO')
