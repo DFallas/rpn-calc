@@ -49,10 +49,27 @@ For this initial version valid operators are : + - * /
  
 Well there's always space for improvement, making things more flexible, more reusable and more extensible
 In this particular case I already have in mind some improvements for the current state:
-* Read and Write operations could be much more robust to accomplish a better user experience
-* The approach of giving the calculator a cOut method is right now to coupled with the    expected
- output for the console. In other words the interface (inputs and outputs) of the cOut function should be abstracted a bit more for it to work with other interfaces besides conosle.
- * Definitely a typed command memory when pressing the up arrow key  is always useful on a terminal, which is not present in this exercise.
+-  Read and Write operations could be much more robust to accomplish a better user experience
+- The approach of giving the calculator a cOut method is right now to coupled with the    expected output for the console. In other words the interface (inputs and outputs) of the cOut function should be abstracted a bit more for it to work with other interfaces besides conosle.
+ - Definitely a typed command memory when pressing the up arrow key  is always useful on a terminal, which is not present in this exercise.
+
+## Unit Testing
+Test cases where implemented  with  React-Test Library  which comes by default when scaffolding an app  with Create Rreact App, for more information  see [React Testing  Library  Doc](https://testing-library.com/docs/)
+ 
+The main approach for testing was to mock the event or series of events on the application and then looking for the expected output string on the console output.
+### ConsoleStandartIO
+For the console component the following scenarios where tested:
+-  `q`
+- `calc`
+- `help`
+### useCalcHook
+For the calculation hook the following scenarios where tested
+ 
+- inline typing operations
+- complex (several operands  and operators in  the same input) where
+-  inline and complex operation combined
+- invalid operant testing
+-  invalid expression testing.
 ## Available Scripts
  
 In the project directory, you can run:
@@ -66,7 +83,7 @@ The page will reload when you make changes.\
 You may also see any lint errors in the console.
  
 ### `npm test`
- 
+
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
  
