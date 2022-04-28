@@ -16,8 +16,8 @@ const useRpnCalc = ({supportedOperators, cOut})=>{
     const currentStack =[...stack]
      let result = '';
      let error = false
-     const rightOp = parseFloat(currentStack.pop()) 
-     const leftOp = parseFloat(currentStack.pop())
+     const rightOp = parseFloat(currentStack.pop()).toFixed(5) 
+     const leftOp = parseFloat(currentStack.pop()).toFixed(5)
      result = operators[`${operator}`](leftOp, rightOp);
      if(Number.isNaN(result)) error = true;
      return {result, currentStack, error};
