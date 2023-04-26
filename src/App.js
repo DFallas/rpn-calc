@@ -8,7 +8,7 @@ function App() {
     <Container disableGutters maxWidth="none"  className="App">
       <header className="App-header">
         <p className='signature'>
-        RVP Calc
+        RPN Calc
         </p>
       </header>
       <ConsoleStandartIO />
